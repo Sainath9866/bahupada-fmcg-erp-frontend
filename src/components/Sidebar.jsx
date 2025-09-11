@@ -7,7 +7,7 @@ import {
   ChevronRight, ChevronDown, AlertTriangle, Target, Bell, Database, Barcode,
   BookOpen, Calculator, Tag, Scale, CreditCard, Gift, Hash, Building,
   UserCheck, Truck, Banknote, Percent, FileCheck, Calendar, Upload,
-  Download, Shield, Globe, QrCode
+  Download, Shield, Globe, QrCode, X
 } from 'lucide-react';
 
 function Node({ icon: Icon, label, children, to }) {
@@ -32,15 +32,24 @@ function Node({ icon: Icon, label, children, to }) {
   );
 }
 
-export default function Sidebar({ open = true }) {
+export default function Sidebar({ open = true, onToggle }) {
   return (
     <>
-      {open && <div className="fixed inset-0 bg-black/50 z-30 md:hidden" onClick={() => {}}></div>}
-      <aside className={`${open ? 'translate-x-0' : '-translate-x-full'} w-72 bg-white text-gray-800 h-screen fixed top-0 left-0 z-40 overflow-y-auto transition-transform duration-300 ease-in-out md:relative md:translate-x-0 border-r border-gray-200`}> 
+      {open && <div className="fixed inset-0 bg-black/50 z-30 lg:hidden" onClick={onToggle}></div>}
+      <aside className={`${open ? 'translate-x-0' : '-translate-x-full'} w-72 bg-white text-gray-800 h-screen fixed top-0 left-0 z-40 overflow-y-auto transition-transform duration-300 ease-in-out border-r border-gray-200`}> 
         <div className="p-4 text-lg font-semibold border-b border-gray-200">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white font-bold">B</div>
-            <span>Bahupada</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white font-bold">B</div>
+              <span>Bahupada</span>
+            </div>
+            <button
+              onClick={onToggle}
+              className="p-1 rounded hover:bg-gray-100 text-gray-500 hover:text-gray-700"
+              aria-label="Close Sidebar"
+            >
+              <X size={20} />
+            </button>
           </div>
           <span className="text-xs text-gray-500">FMCG ERP</span>
         </div>

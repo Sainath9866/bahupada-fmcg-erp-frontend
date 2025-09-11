@@ -379,14 +379,15 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const toggleSidebar = () => {
+    console.log('Toggle sidebar clicked, current state:', sidebarOpen);
     setSidebarOpen(!sidebarOpen);
   };
 
   return (
     <BrowserRouter>
       <div className="flex bg-gray-50 text-gray-800 min-h-screen w-full">
-        <Sidebar open={sidebarOpen} />
-        <main className="flex-1">
+        <Sidebar open={sidebarOpen} onToggle={toggleSidebar} />
+        <main className={`flex-1 transition-all duration-300 ${sidebarOpen ? 'lg:ml-72' : 'ml-0'}`}>
           {/* Top Bar */}
           <div className="sticky top-0 z-30 bg-white border-b border-gray-200 px-4 h-14 flex items-center gap-3 shadow-sm">
             <button 
