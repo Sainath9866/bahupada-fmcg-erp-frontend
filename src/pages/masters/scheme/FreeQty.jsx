@@ -479,3 +479,9 @@ const FreeQty = () => {
 };
 
 export default FreeQty;
+
+
+
+
+
+

@@ -523,3 +523,9 @@ const SlabDiscounts = () => {
 };
 
 export default SlabDiscounts;
+
+
+
+
+
+

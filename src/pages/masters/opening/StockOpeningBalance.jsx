@@ -481,3 +481,9 @@ const StockOpeningBalance = () => {
 };
 
 export default StockOpeningBalance;
+
+
+
+
+
+

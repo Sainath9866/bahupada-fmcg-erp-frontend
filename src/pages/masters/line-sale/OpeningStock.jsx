@@ -481,3 +481,9 @@ const OpeningStock = () => {
 };
 
 export default OpeningStock;
+
+
+
+
+
+
