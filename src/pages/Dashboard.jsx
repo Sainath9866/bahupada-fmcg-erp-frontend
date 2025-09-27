@@ -121,25 +121,27 @@ function Tile({ title, icon: Icon, color, links }) {
   const [open, setOpen] = useState(false);
   return (
     <div
-      className={`relative rounded-xl shadow-md text-white ${color} transition-transform duration-200 hover:-translate-y-0.5`}
+      className={`relative rounded-xl shadow-md text-white ${color} transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer`}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onClick={() => setOpen(!open)}
     >
       {/* Tile body */}
-      <div className="p-3 h-36 flex items-center justify-center select-none">
+      <div className="p-3 h-32 sm:h-36 flex items-center justify-center select-none">
         {!open ? (
-          <div className="flex items-center justify-center flex-col">
-            <Icon size={40} className="opacity-90 mb-3" />
-            <div className="text-lg font-semibold tracking-wide">{title}</div>
+          <div className="flex items-center justify-center flex-col text-center">
+            <Icon size={32} className="opacity-90 mb-2 sm:mb-3 sm:w-10 sm:h-10" />
+            <div className="text-sm sm:text-lg font-semibold tracking-wide leading-tight">{title}</div>
           </div>
         ) : (
           <div className="w-full">
-            <ul className="space-y-1.5">
+            <ul className="space-y-1 sm:space-y-1.5">
               {links.map((l, idx) => (
                 <li key={idx}>
                   <Link
                     to={l.to}
-                    className="block w-full text-left px-0 py-0.5 text-sm text-white/90 hover:text-white transition duration-150 filter hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.65)]"
+                    className="block w-full text-left px-0 py-0.5 text-xs sm:text-sm text-white/90 hover:text-white transition duration-150 filter hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.65)]"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {l.label}
                   </Link>
@@ -155,13 +157,13 @@ function Tile({ title, icon: Icon, color, links }) {
 
 export default function Dashboard() {
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="p-4 sm:p-6 bg-gray-50 min-h-screen">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
         {modules.map((m) => (
           <Tile key={m.key} title={m.title} icon={m.icon} color={m.color} links={m.links} />
         ))}
       </div>
-      <div className="mt-10 text-center text-xs text-gray-500">Botree Software International Pvt Ltd · © All Rights Reserved</div>
+      <div className="mt-8 sm:mt-10 text-center text-xs text-gray-500 px-4">Botree Software International Pvt Ltd · © All Rights Reserved</div>
     </div>
   );
 }

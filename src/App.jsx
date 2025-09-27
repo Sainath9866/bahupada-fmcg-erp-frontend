@@ -196,46 +196,6 @@ import Collections from './pages/customer/Collections.jsx';
 import Retailer from './pages/customer/Retailer.jsx';
 import DeliveryProcess from './pages/customer/DeliveryProcess.jsx';
 import OrderBooking from './pages/customer/OrderBooking.jsx';
-import RetailerChannel from './pages/customer/RetailerChannel.jsx';
-import RetailerClass from './pages/customer/RetailerClass.jsx';
-import RetailerGroup from './pages/customer/RetailerGroup.jsx';
-import SalesReturn from './pages/customer/SalesReturn.jsx';
-import BankMaster from './pages/customer/BankMaster.jsx';
-import CollectionsDiscountMaster from './pages/customer/CollectionsDiscountMaster.jsx';
-import MidasSalesReturn from './pages/customer/MidasSalesReturn.jsx';
-import OrderToBilling from './pages/customer/OrderToBilling.jsx';
-import Godown from './pages/inventory/Godown.jsx';
-import StockAdjustment from './pages/inventory/StockAdjustment.jsx';
-import BatchTransfer from './pages/inventory/BatchTransfer.jsx';
-import Product from './pages/product/Product.jsx';
-import PriceDiscount from './pages/product/PriceDiscount.jsx';
-import UOMMaster from './pages/product/UOMMaster.jsx';
-import GSTTaxStructure from './pages/product/GSTTaxStructure.jsx';
-import Scheme from './pages/schemes/Scheme.jsx';
-import ClaimType from './pages/schemes/ClaimType.jsx';
-import OthersClaim from './pages/schemes/OthersClaim.jsx';
-import SecondarySchemeClaim from './pages/schemes/SecondarySchemeClaim.jsx';
-import InvoiceTotClaim from './pages/schemes/InvoiceTotClaim.jsx';
-import ProgramMaterialClaim from './pages/schemes/ProgramMaterialClaim.jsx';
-import GSTClaim from './pages/schemes/GSTClaim.jsx';
-import TBTLClaim from './pages/schemes/TBTLClaim.jsx';
-import OtherServiceClaim from './pages/schemes/OtherServiceClaim.jsx';
-import ProgramServiceClaim from './pages/schemes/ProgramServiceClaim.jsx';
-import TOClaim from './pages/schemes/TOClaim.jsx';
-import ManualClaim from './pages/schemes/ManualClaim.jsx';
-import LeakClaim from './pages/schemes/LeakDamageReturnClaim.jsx';
-import AccountsCalendar from './pages/finance/AccountsCalendar.jsx';
-import PdaExport from './pages/configuration/PdaExport.jsx';
-import DistributorConfiguration from './pages/configuration/DistributorConfiguration.jsx';
-import UserProfile from './pages/configuration/UserProfile.jsx';
-import UserGroup from './pages/configuration/UserGroup.jsx';
-import JcCalendar from './pages/configuration/JcCalendar.jsx';
-import HolidayCalendar from './pages/configuration/HolidayCalendar.jsx';
-import BillPrintConfiguration from './pages/configuration/BillPrintConfiguration.jsx';
-import DayEnd from './pages/configuration/DayEnd.jsx';
-import ETL from './pages/configuration/ETL.jsx';
-import EInvoiceAuthentication from './pages/configuration/EInvoiceAuthentication.jsx';
-import DownloadPrintServer from './pages/utilities/DownloadPrintServer.jsx';
 
 function Page({ title }) {
   return (
@@ -691,64 +651,14 @@ export default function App() {
             <Route path="/customer/retailer" element={<Retailer />} />
             <Route path="/customer/delivery-process" element={<DeliveryProcess />} />
             <Route path="/customer/order-booking" element={<OrderBooking />} />
-            <Route path="/customer/retailer-channel" element={<RetailerChannel />} />
-            <Route path="/customer/retailer-class" element={<RetailerClass />} />
-            <Route path="/customer/retailer-group" element={<RetailerGroup />} />
-            <Route path="/customer/sales-return" element={<SalesReturn />} />
-            <Route path="/customer/bank-master" element={<BankMaster />} />
-        <Route path="/customer/collections-discount-master" element={<CollectionsDiscountMaster />} />
-        <Route path="/customer/midas-sales-return" element={<MidasSalesReturn />} />
-        <Route path="/customer/order-to-billing" element={<OrderToBilling />} />
             
             {/* Inventory */}
             <Route path="/inventory" element={<Inventory />} />
-            <Route path="/inventory/godown" element={<Godown />} />
-            <Route path="/inventory/stock-adjustment" element={<StockAdjustment />} />
-            <Route path="/inventory/batch-transfer" element={<BatchTransfer />} />
             <Route path="/inventory/stock-summary" element={<StockSummaryInventory />} />
             <Route path="/inventory/batch-expiry" element={<BatchExpiryInventory />} />
             <Route path="/inventory/reorder-alerts" element={<ReorderLevel />} />
             <Route path="/inventory/rack-stacking" element={<RackManagement />} />
             <Route path="/inventory/stock-valuation" element={<StockValuation />} />
-            
-            {/* Product & Price */}
-            <Route path="/product/product" element={<Product />} />
-            <Route path="/product/price-discount" element={<PriceDiscount />} />
-            <Route path="/product/uom-master" element={<UOMMaster />} />
-            <Route path="/product/gst-tax-structure" element={<GSTTaxStructure />} />
-            
-            {/* Schemes & Claims */}
-            <Route path="/schemes/scheme" element={<Scheme />} />
-            <Route path="/schemes/claim-type" element={<ClaimType />} />
-            <Route path="/schemes/others-claim" element={<OthersClaim />} />
-            <Route path="/schemes/secondary-scheme-claim" element={<SecondarySchemeClaim />} />
-            <Route path="/schemes/invoice-tot-claim" element={<InvoiceTotClaim />} />
-            <Route path="/schemes/program-material-claim" element={<ProgramMaterialClaim />} />
-            <Route path="/schemes/gst-claim" element={<GSTClaim />} />
-            <Route path="/schemes/tbtl-claim" element={<TBTLClaim />} />
-            <Route path="/schemes/other-service-claim" element={<OtherServiceClaim />} />
-            <Route path="/schemes/program-service-claim" element={<ProgramServiceClaim />} />
-            <Route path="/schemes/to-claim" element={<TOClaim />} />
-            <Route path="/schemes/manual-claim" element={<ManualClaim />} />
-            <Route path="/schemes/leak-claim" element={<LeakClaim />} />
-            
-            {/* Finance */}
-            <Route path="/finance/accounts-calendar" element={<AccountsCalendar />} />
-            
-            {/* Configuration */}
-            <Route path="/configuration/pda-export" element={<PdaExport />} />
-            <Route path="/configuration/distributor-configuration" element={<DistributorConfiguration />} />
-            <Route path="/configuration/user-profile" element={<UserProfile />} />
-            <Route path="/configuration/user-group" element={<UserGroup />} />
-            <Route path="/configuration/jc-calendar" element={<JcCalendar />} />
-            <Route path="/configuration/holiday-calendar" element={<HolidayCalendar />} />
-            <Route path="/configuration/bill-print-configuration" element={<BillPrintConfiguration />} />
-            <Route path="/configuration/day-end" element={<DayEnd />} />
-            <Route path="/configuration/etl" element={<ETL />} />
-            <Route path="/configuration/e-invoice-authentication" element={<EInvoiceAuthentication />} />
-            
-            {/* Utilities */}
-            <Route path="/utilities/download-print-server" element={<DownloadPrintServer />} />
             
             {/* Legacy inventory routes */}
             <Route path="/inventory/reorder-level" element={<ReorderLevel />} />

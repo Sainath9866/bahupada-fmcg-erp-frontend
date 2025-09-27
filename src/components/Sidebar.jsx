@@ -11,38 +11,38 @@ function Node({ icon: Icon, label, children, to }) {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const isActive = to && location.pathname.startsWith(to);
-  const base = 'flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-gray-700';
+  const base = 'flex items-center gap-2 px-2 sm:px-3 py-2 rounded hover:bg-gray-100 text-gray-700 text-sm';
   if (children) {
     return (
       <div className="text-sm">
         <button className={`${base} w-full text-left`} onClick={() => setOpen(!open)}>
-          {open ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}<Icon size={16}/><span>{label}</span>
+          {open ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}<Icon size={14}/><span className="truncate">{label}</span>
         </button>
-        {open && <div className="ml-5 border-l border-gray-200 pl-3 flex flex-col gap-1">{children}</div>}
+        {open && <div className="ml-4 sm:ml-5 border-l border-gray-200 pl-2 sm:pl-3 flex flex-col gap-1">{children}</div>}
       </div>
     );
   }
   return (
     <Link className={`${base} ${isActive ? 'bg-purple-100 text-purple-700' : ''}`} to={to || '#'}>
-      <Icon size={16}/><span>{label}</span>
+      <Icon size={14}/><span className="truncate">{label}</span>
     </Link>
   );
 }
 
-export default function Sidebar({ open = true, onToggle }) {
+export default function Sidebar({ open = false, onToggle }) {
   return (
     <>
       {open && <div className="fixed inset-0 bg-black/50 z-30 lg:hidden" onClick={onToggle}></div>}
-      <aside className={`${open ? 'translate-x-0' : '-translate-x-full'} w-72 bg-white text-gray-800 h-screen fixed top-0 left-0 z-40 overflow-y-auto transition-transform duration-300 ease-in-out border-r border-gray-200`}> 
-        <div className="p-4 text-lg font-semibold border-b border-gray-200">
+      <aside className={`${open ? 'translate-x-0' : '-translate-x-full'} w-64 sm:w-72 bg-white text-gray-800 h-screen fixed top-0 left-0 z-40 overflow-y-auto transition-transform duration-300 ease-in-out border-r border-gray-200`}> 
+        <div className="p-3 sm:p-4 text-lg font-semibold border-b border-gray-200">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white font-bold">B</div>
-              <span>Bahupada</span>
+              <span className="hidden sm:block">Bahupada</span>
             </div>
             <button
               onClick={onToggle}
-              className="p-1 rounded hover:bg-gray-100 text-gray-500 hover:text-gray-700"
+              className="p-1 rounded hover:bg-gray-100 text-gray-500 hover:text-gray-700 lg:hidden"
               aria-label="Close Sidebar"
             >
               <X size={20} />
@@ -51,7 +51,7 @@ export default function Sidebar({ open = true, onToggle }) {
           <span className="text-xs text-gray-500">FMCG ERP</span>
         </div>
         
-        <nav className="flex flex-col gap-1 p-2">
+        <nav className="flex flex-col gap-1 p-1 sm:p-2">
           <Node icon={HomeIcon} label="Home" to="/" />
           <Node icon={Building} label="Company">
             <Node icon={FileText} label="Credit Note - Debit Note" to="/company/credit-debit-note" />
@@ -154,12 +154,12 @@ export default function Sidebar({ open = true, onToggle }) {
           </Node>
         </nav>
         
-        <div className="mt-auto p-4 border-t border-gray-200">
+        <div className="mt-auto p-3 sm:p-4 border-t border-gray-200">
           <div className="text-xs text-gray-500 space-y-1">
-            <div>Sales Support</div>
-            <div>Technology Support</div>
-            <div>support@bahupada.com</div>
-            <div>+91-XXXX-XXXXXX</div>
+            <div className="hidden sm:block">Sales Support</div>
+            <div className="hidden sm:block">Technology Support</div>
+            <div className="truncate">support@bahupada.com</div>
+            <div className="truncate">+91-XXXX-XXXXXX</div>
           </div>
         </div>
       </aside>

@@ -134,11 +134,11 @@ const Billing = () => {
   };
 
   return (
-    <div className="p-3 sm:p-6 bg-gray-50 min-h-screen overflow-x-hidden">
+    <div className="p-2 sm:p-6 bg-gray-50 min-h-screen max-w-full">
       {/* Header */}
-      <div className="bg-purple-600 text-white px-3 sm:px-6 py-4 rounded-t-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-purple-600 text-white px-3 sm:px-6 py-3 sm:py-4 rounded-t-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
         <div className="flex items-center gap-2 flex-wrap">
-          <FileText size={20} />
+          <FileText size={18} className="sm:w-5 sm:h-5" />
           <span className="text-sm sm:text-lg font-semibold">Customer</span>
           <span className="text-purple-200">›</span>
           <span className="text-sm sm:text-lg font-semibold">Billing</span>
@@ -160,22 +160,22 @@ const Billing = () => {
           <>
             {/* Quick Search Section */}
             <div className="p-3 sm:p-6 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Search</h3>
-              <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-end">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Quick Search</h3>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-end">
                 <div className="flex-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                     Search Term
                   </label>
                   <input
                     type="text"
                     value={searchTerm}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     placeholder="Enter atleast 3 characters"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                     Select Date
                   </label>
                   <div className="relative">
@@ -183,22 +183,22 @@ const Billing = () => {
                       type="date"
                       value={selectedDate}
                       onChange={handleDateChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none"
+                      className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none"
                     />
-                    <Calendar size={16} className="absolute right-3 top-2.5 text-gray-400 pointer-events-none" />
+                    <Calendar size={14} className="absolute right-2 sm:right-3 top-2.5 text-gray-400 pointer-events-none" />
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <button
                     onClick={handleSearch}
-                    className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors"
+                    className="flex items-center gap-1 sm:gap-2 bg-purple-600 hover:bg-purple-700 text-white px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg transition-colors"
                   >
-                    <Search size={16} />
+                    <Search size={14} className="sm:w-4 sm:h-4" />
                     Search
                   </button>
                   <button
                     onClick={handleViewAll}
-                    className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors"
+                    className="flex items-center gap-1 sm:gap-2 bg-purple-600 hover:bg-purple-700 text-white px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg transition-colors"
                   >
                     View All
                   </button>
@@ -207,46 +207,46 @@ const Billing = () => {
             </div>
 
             {/* Search Results Section */}
-            <div className="p-3 sm:p-6 overflow-x-hidden">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Search Results</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
+            <div className="p-3 sm:p-6">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Search Results</h3>
+              <div className="overflow-x-auto shadow-sm border border-gray-200 rounded-lg">
+                <table className="min-w-full border-collapse text-xs sm:text-sm">
                   <thead>
                     <tr className="bg-gray-50">
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Invoice No
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Retailer Name
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Salesman
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Invoice Date
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Gross Amt
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Discount Amt
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Scheme Amt
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Tax Amt
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Net Amt
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Billing Status
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Collection Status
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
                         Action
                       </th>
                     </tr>
@@ -255,35 +255,35 @@ const Billing = () => {
                     {filteredBills.length > 0 ? (
                       filteredBills.map((bill) => (
                         <tr key={bill.id} className="hover:bg-gray-50">
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             {bill.invoiceNo}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             {bill.retailerName}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             {bill.salesman}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             {bill.invoiceDate}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             ₹{bill.grossAmt.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             ₹{bill.discountAmt.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             ₹{bill.schemeAmt.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             ₹{bill.taxAmt.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
                             ₹{bill.netAmt.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
-                            <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
+                            <span className={`inline-flex px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-semibold rounded-full ${
                               bill.billingStatus === 'Completed'
                                 ? 'bg-green-100 text-green-800'
                                 : 'bg-yellow-100 text-yellow-800'
@@ -291,8 +291,8 @@ const Billing = () => {
                               {bill.billingStatus}
                             </span>
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
-                            <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
+                            <span className={`inline-flex px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-semibold rounded-full ${
                               bill.collectionStatus === 'Completed'
                                 ? 'bg-green-100 text-green-800'
                                 : 'bg-yellow-100 text-yellow-800'
@@ -300,16 +300,16 @@ const Billing = () => {
                               {bill.collectionStatus}
                             </span>
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-900 border-b">
-                            <div className="flex items-center gap-2">
-                              <button className="text-blue-600 hover:text-blue-800">
-                                <Eye size={16} />
+                          <td className="px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-900 border-b whitespace-nowrap">
+                            <div className="flex items-center gap-0.5 sm:gap-1">
+                              <button className="text-blue-600 hover:text-blue-800 p-0.5 sm:p-1">
+                                <Eye size={12} className="sm:w-3.5 sm:h-3.5" />
                               </button>
-                              <button className="text-green-600 hover:text-green-800">
-                                <Edit size={16} />
+                              <button className="text-green-600 hover:text-green-800 p-0.5 sm:p-1">
+                                <Edit size={12} className="sm:w-3.5 sm:h-3.5" />
                               </button>
-                              <button className="text-red-600 hover:text-red-800">
-                                <Trash2 size={16} />
+                              <button className="text-red-600 hover:text-red-800 p-0.5 sm:p-1">
+                                <Trash2 size={12} className="sm:w-3.5 sm:h-3.5" />
                               </button>
                             </div>
                           </td>
@@ -317,7 +317,7 @@ const Billing = () => {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="12" className="px-4 py-8 text-center text-gray-500">
+                        <td colSpan="12" className="px-3 py-6 sm:px-4 sm:py-8 text-center text-xs sm:text-sm text-gray-500">
                           No matching record(s) found
                         </td>
                       </tr>

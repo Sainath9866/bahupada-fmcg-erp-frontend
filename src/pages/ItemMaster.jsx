@@ -88,8 +88,8 @@ export default function ItemMaster() {
 
   if (loading) {
     return (
-      <div className="p-6">
-        <h1 className="text-2xl font-semibold mb-4">Item Master</h1>
+      <div className="p-4 sm:p-6">
+        <h1 className="text-xl sm:text-2xl font-semibold mb-4">Item Master</h1>
         <div className="flex items-center justify-center h-64">
           <div className="text-gray-400">Loading items...</div>
         </div>
@@ -98,12 +98,12 @@ export default function ItemMaster() {
   }
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold">Item Master</h1>
+    <div className="p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+        <h1 className="text-xl sm:text-2xl font-semibold">Item Master</h1>
         <button
           onClick={() => setShowForm(true)}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full sm:w-auto"
         >
           <Plus size={16} />
           Add Item
@@ -124,8 +124,8 @@ export default function ItemMaster() {
         </div>
       </div>
 
-      {/* Items Table */}
-      <div className="bg-gray-800 rounded-lg overflow-hidden">
+      {/* Items Table - Desktop View */}
+      <div className="hidden lg:block bg-gray-800 rounded-lg overflow-hidden">
         <table className="w-full">
           <thead className="bg-gray-700">
             <tr>
@@ -203,10 +203,87 @@ export default function ItemMaster() {
         </table>
       </div>
 
+      {/* Mobile Card View */}
+      <div className="lg:hidden space-y-4">
+        {filteredItems.length === 0 ? (
+          <div className="bg-gray-800 rounded-lg p-8 text-center text-gray-400">
+            No items found
+          </div>
+        ) : (
+          filteredItems.map((item) => (
+            <div key={item.id} className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h3 className="text-white font-medium text-lg">{item.name}</h3>
+                  <p className="text-gray-400 text-sm font-mono">{item.sku}</p>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setEditingItem(item)}
+                    className="p-2 text-blue-400 hover:text-blue-300"
+                    title="Edit"
+                  >
+                    <Edit size={16} />
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (confirm('Delete this item?')) {
+                        api.delete(`/items/${item.id}`).then(() => fetchItems());
+                      }
+                    }}
+                    className="p-2 text-red-400 hover:text-red-300"
+                    title="Delete"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm mb-3">
+                <div>
+                  <span className="text-gray-400">Brand:</span>
+                  <span className="text-gray-300 ml-2">{item.brand || '-'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">HSN:</span>
+                  <span className="text-gray-300 ml-2">{item.hsn || '-'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">GST:</span>
+                  <span className="text-gray-300 ml-2">{item.gst_rate ? `${item.gst_rate}%` : '-'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">MRP:</span>
+                  <span className="text-gray-300 ml-2">{item.mrp ? `₹${item.mrp}` : '-'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">Cost:</span>
+                  <span className="text-gray-300 ml-2">{item.cost_price ? `₹${item.cost_price}` : '-'}</span>
+                </div>
+                <div>
+                  <span className="text-gray-400">Margin:</span>
+                  <span className="text-gray-300 ml-2">
+                    {item.mrp && item.cost_price ? 
+                      `${((parseFloat(item.mrp) - parseFloat(item.cost_price)) / parseFloat(item.cost_price) * 100).toFixed(2)}%` 
+                      : '-'}
+                  </span>
+                </div>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className={`px-2 py-1 rounded text-xs ${
+                  item.is_active ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
+                }`}>
+                  {item.is_active ? 'Active' : 'Inactive'}
+                </span>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
       {/* Item Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 rounded-lg p-6 w-full max-w-md max-h-[80vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-800 rounded-lg p-4 sm:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
             <h2 className="text-xl font-semibold mb-4">
               {editingItem ? 'Edit Item' : 'Add New Item'}
             </h2>
