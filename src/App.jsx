@@ -256,7 +256,7 @@ function Breadcrumb() {
       'sales-purchase': 'Sales & Purchase Reports',
       'payroll': 'Payroll Reports',
       'target': 'Target Reports',
-      'alerts': 'Alerts & Notifications',
+      'alerts': 'Alerts & cations',
       'backup': 'Backup & Restore',
       'audit-logs': 'Audit Logs',
       'budgeting': 'Budgeting & Cost Control',
@@ -422,38 +422,45 @@ export default function App() {
         <Sidebar open={sidebarOpen} onToggle={toggleSidebar} />
         <main className={`flex-1 transition-all duration-300 ${sidebarOpen ? 'lg:ml-72' : 'ml-0'}`}>
           {/* Top Bar */}
-          <div className="sticky top-0 z-30 bg-white border-b border-gray-200 px-4 h-14 flex items-center gap-3 shadow-sm">
+          <div className="sticky top-0 z-30 bg-white border-b border-gray-200 px-2 sm:px-4 h-12 sm:h-14 flex items-center gap-1 sm:gap-3 shadow-sm">
             <button 
-              className="p-2 rounded hover:bg-gray-100" 
+              className="p-1 sm:p-2 rounded hover:bg-gray-100" 
               onClick={toggleSidebar} 
               aria-label="Toggle Sidebar"
             >
-              <Menu size={20} />
+              <Menu size={16} className="sm:w-5 sm:h-5" />
             </button>
             
-            {/* Dynamic Breadcrumb */}
-            <Breadcrumb />
+            {/* Dynamic Breadcrumb - Hidden on mobile */}
+            <div className="hidden md:block">
+              <Breadcrumb />
+            </div>
             
             <div className="flex-1"></div>
             
-            {/* Search */}
-            <div className="relative">
-              <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            {/* Search - Responsive width */}
+            <div className="relative hidden sm:block">
+              <Search size={14} className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input 
                 placeholder="Search" 
-                className="w-64 bg-gray-50 border border-gray-200 rounded px-10 py-2 text-sm outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
+                className="w-32 sm:w-48 lg:w-64 bg-gray-50 border border-gray-200 rounded px-8 py-1.5 text-xs sm:text-sm outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
               />
             </div>
             
+            {/* Mobile Search Button */}
+            <button className="p-1 sm:p-2 rounded hover:bg-gray-100 sm:hidden">
+              <Search size={16} />
+            </button>
+            
             {/* Notifications */}
-            <button className="p-2 rounded hover:bg-gray-100 relative">
-              <Bell size={18} />
-              <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">1</span>
+            <button className="p-1 sm:p-2 rounded hover:bg-gray-100 relative">
+              <Bell size={16} className="sm:w-4.5 sm:h-4.5" />
+              <span className="absolute -top-0.5 -right-0.5 bg-orange-500 text-white text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center text-xs">1</span>
             </button>
             
             {/* User */}
-            <button className="p-2 rounded hover:bg-gray-100">
-              <User size={18} />
+            <button className="p-1 sm:p-2 rounded hover:bg-gray-100">
+              <User size={16} className="sm:w-4.5 sm:h-4.5" />
             </button>
           </div>
           

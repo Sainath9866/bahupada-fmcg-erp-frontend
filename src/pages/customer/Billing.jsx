@@ -134,83 +134,83 @@ const Billing = () => {
   };
 
   return (
-    <div className="p-2 sm:p-6 bg-gray-50 min-h-screen max-w-full">
+    <div className="bg-gray-50 min-h-screen" style={{ padding: window.innerWidth < 640 ? '4px' : '24px', maxWidth: window.innerWidth < 640 ? '100vw' : '100%', width: window.innerWidth < 640 ? '100vw' : 'auto', overflowX: 'hidden', margin: 0, boxSizing: 'border-box' }}>
       {/* Header */}
-      <div className="bg-purple-600 text-white px-3 sm:px-6 py-3 sm:py-4 rounded-t-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
-        <div className="flex items-center gap-2 flex-wrap">
-          <FileText size={18} className="sm:w-5 sm:h-5" />
-          <span className="text-sm sm:text-lg font-semibold">Customer</span>
+      <div className="bg-purple-600 text-white px-1 sm:px-6 py-1 sm:py-4 rounded-t-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-4">
+        <div className="flex items-center gap-1 sm:gap-2" style={{ fontSize: window.innerWidth < 640 ? '11px' : '16px' }}>
+          <FileText size={14} className="sm:w-5 sm:h-5" />
+          <span className="font-semibold">{window.innerWidth < 640 ? 'Cust' : 'Customer'}</span>
           <span className="text-purple-200">›</span>
-          <span className="text-sm sm:text-lg font-semibold">Billing</span>
+          <span className="font-semibold">{window.innerWidth < 640 ? 'Bill' : 'Billing'}</span>
         </div>
         {view === 'list' && (
           <button
             onClick={() => setView('form')}
-            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-1 py-1 sm:px-4 sm:py-2 rounded flex items-center gap-1 transition-colors"
+            style={{ fontSize: window.innerWidth < 640 ? '10px' : '14px' }}
           >
-            <Plus size={16} />
-            Create New
+            <Plus size={12} className="sm:w-4 sm:h-4" />
+            <span>{window.innerWidth < 640 ? 'New' : 'Create New'}</span>
           </button>
         )}
       </div>
 
-      {/* Main Content */}
-      <div className="bg-white rounded-b-lg shadow-lg">
+      <div className="bg-white rounded-b-lg shadow-lg" style={{ margin: 0, maxWidth: '100%', boxSizing: 'border-box' }}>
         {view === 'list' ? (
           <>
             {/* Quick Search Section */}
-            <div className="p-3 sm:p-6 border-b border-gray-200">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Quick Search</h3>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-end">
-                <div className="flex-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+            <div className="border-b border-gray-200" style={{ padding: window.innerWidth < 640 ? '8px' : '24px', margin: 0, boxSizing: 'border-box' }}>
+              <h3 className="text-sm sm:text-lg font-semibold text-gray-800 mb-2 sm:mb-4">Quick Search</h3>
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 sm:items-end" style={{ margin: 0, width: '100%', boxSizing: 'border-box' }}>
+                <div style={{ flex: window.innerWidth < 640 ? '0 0 40%' : '1' }}>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                     Search Term
                   </label>
                   <input
                     type="text"
                     value={searchTerm}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="Enter atleast 3 characters"
+                    className="w-full px-2 py-1.5 sm:px-3 sm:py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder={window.innerWidth < 640 ? "Search..." : "Enter atleast 3 characters"}
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
-                    Select Date
+                <div style={{ flex: window.innerWidth < 640 ? '0 0 30%' : '1' }}>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    {window.innerWidth < 640 ? "Date" : "Select Date"}
                   </label>
                   <div className="relative">
                     <input
                       type="date"
                       value={selectedDate}
                       onChange={handleDateChange}
-                      className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none"
+                      className="w-full px-2 py-1.5 sm:px-3 sm:py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     />
-                    <Calendar size={14} className="absolute right-2 sm:right-3 top-2.5 text-gray-400 pointer-events-none" />
+                    <Calendar size={12} className="absolute right-2 top-2 text-gray-400 pointer-events-none" />
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-1" style={{ flex: window.innerWidth < 640 ? '0 0 30%' : 'none' }}>
                   <button
                     onClick={handleSearch}
-                    className="flex items-center gap-1 sm:gap-2 bg-purple-600 hover:bg-purple-700 text-white px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg transition-colors"
+                    className="flex items-center gap-1 bg-purple-600 hover:bg-purple-700 text-white px-1 py-1.5 sm:px-4 sm:py-2 text-sm rounded-lg transition-colors"
                   >
-                    <Search size={14} className="sm:w-4 sm:h-4" />
-                    Search
+                    <Search size={12} className="sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Search</span>
                   </button>
                   <button
                     onClick={handleViewAll}
-                    className="flex items-center gap-1 sm:gap-2 bg-purple-600 hover:bg-purple-700 text-white px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg transition-colors"
+                    className="flex items-center gap-1 bg-purple-600 hover:bg-purple-700 text-white px-1 py-1.5 sm:px-4 sm:py-2 text-sm rounded-lg transition-colors"
                   >
-                    View All
+                    {window.innerWidth < 640 ? "All" : "View All"}
                   </button>
                 </div>
               </div>
             </div>
 
             {/* Search Results Section */}
-            <div className="p-3 sm:p-6">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Search Results</h3>
-              <div className="overflow-x-auto shadow-sm border border-gray-200 rounded-lg">
-                <table className="min-w-full border-collapse text-xs sm:text-sm">
+            <div style={{ padding: window.innerWidth < 640 ? '8px' : '24px', margin: 0, boxSizing: 'border-box' }}>
+              <h3 className="text-sm sm:text-lg font-semibold text-gray-800 mb-2 sm:mb-4">Search Results</h3>
+              <div className="shadow-sm border border-gray-200 rounded-lg" style={{ width: '100%', overflowX: 'auto', maxWidth: '100vw' }}>
+                <table className="border-collapse text-xs sm:text-sm" style={{ minWidth: '700px', width: '100%' }}>
                   <thead>
                     <tr className="bg-gray-50">
                       <th className="px-2 py-1.5 sm:px-3 sm:py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b whitespace-nowrap">
