@@ -197,14 +197,14 @@ const SalesmanKYC = () => {
   };
 
   return (
-    <div className="p-3 sm:p-6 bg-gray-50 min-h-screen overflow-x-hidden">
+    <div className="bg-gray-50 min-h-screen" style={{ padding: window.innerWidth < 640 ? '4px' : '24px', maxWidth: window.innerWidth < 640 ? '100vw' : '100%', width: window.innerWidth < 640 ? '100vw' : 'auto', overflowX: 'hidden', margin: 0, boxSizing: 'border-box' }}>
       {/* Header */}
-      <div className="bg-purple-600 text-white px-3 sm:px-6 py-4 rounded-t-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-2 flex-wrap">
-          <Shield size={20} />
-          <span className="text-sm sm:text-lg font-semibold">Distribution</span>
+      <div className="bg-purple-600 text-white px-1 sm:px-6 py-1 sm:py-4 rounded-t-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-4">
+        <div className="flex items-center gap-1 sm:gap-2" style={{ fontSize: window.innerWidth < 640 ? '11px' : '16px' }}>
+          <Shield size={14} className="sm:w-5 sm:h-5" />
+          <span className="font-semibold">{window.innerWidth < 640 ? 'Dist' : 'Distribution'}</span>
           <span className="text-purple-200">›</span>
-          <span className="text-sm sm:text-lg font-semibold">Salesman KYC</span>
+          <span className="font-semibold">{window.innerWidth < 640 ? 'Salesman KYC' : 'Salesman KYC'}</span>
         </div>
         {view === 'list' && (
           <button

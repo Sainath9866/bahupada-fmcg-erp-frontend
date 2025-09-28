@@ -101,20 +101,19 @@ const Product = () => {
   };
 
   return (
-    <div className="p-3 sm:p-6 bg-gray-50 min-h-screen overflow-x-hidden">
+    <div className="bg-gray-50 min-h-screen" style={{ padding: window.innerWidth < 640 ? '4px' : '24px', maxWidth: window.innerWidth < 640 ? '100vw' : '100%', width: window.innerWidth < 640 ? '100vw' : 'auto', overflowX: 'hidden', margin: 0, boxSizing: 'border-box' }}>
       {/* Header */}
-      <div className="bg-purple-600 text-white px-3 sm:px-6 py-4 rounded-t-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-2 flex-wrap">
-          <Package size={20} />
-          <span className="text-sm sm:text-lg font-semibold">Product & Price</span>
+      <div className="bg-purple-600 text-white px-1 sm:px-6 py-1 sm:py-4 rounded-t-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-4">
+        <div className="flex items-center gap-1 sm:gap-2" style={{ fontSize: window.innerWidth < 640 ? '11px' : '16px' }}>
+          <Package size={14} className="sm:w-5 sm:h-5" />
+          <span className="font-semibold">{window.innerWidth < 640 ? 'Product' : 'Product & Price'}</span>
           <span className="text-purple-200">›</span>
-          <span className="text-sm sm:text-lg font-semibold">Product</span>
+          <span className="font-semibold">{window.innerWidth < 640 ? 'Product' : 'Product'}</span>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="bg-white rounded-b-lg shadow-lg">
-        <div className="p-3 sm:p-6 overflow-x-hidden">
+      <div className="bg-white rounded-b-lg shadow-lg" style={{ margin: 0, maxWidth: '100%', boxSizing: 'border-box' }}>
+        <div style={{ padding: window.innerWidth < 640 ? '8px' : '24px', margin: 0, boxSizing: 'border-box' }}>
           <div className="max-w-6xl mx-auto">
             {/* Breadcrumbs */}
             <div className="text-sm text-gray-600 mb-6">
@@ -243,6 +242,7 @@ const Product = () => {
 };
 
 export default Product;
+
 
 
 
